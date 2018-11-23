@@ -6,6 +6,7 @@ const app = express();
 const router = require("./router");
 const mongoose = require("mongoose");
 const mongoURI = require("./keys/keys").mongoURI;
+const cors = require("cors");
 
 //DB setup
 mongoose.connect(
@@ -15,6 +16,7 @@ mongoose.connect(
 
 //APP SETUP
 app.use(morgan("combined"));
+app.use(cors());
 app.use(bodyParser.json({ type: "*/*" }));
 router(app);
 
